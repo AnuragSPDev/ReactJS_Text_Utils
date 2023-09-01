@@ -1,6 +1,7 @@
 // import logo from './logo.svg';
 import './App.css';
 import Navbar from './components/Navbar';
+import Textform from './components/Textform';
 import PropTypes from 'prop-types'
 
 
@@ -24,6 +25,7 @@ function App() {
     // </div>
     <>
       <Navbar title='TextUtils' about='About Us' />
+      <Textform heading='User Input'/>
     </>
   );
 }
@@ -36,6 +38,14 @@ Navbar.propTypes = {
 Navbar.defaultProps = {
   title: 'Text Utils',
   about: 'About',
+}
+
+Textform.propTypes = {
+  heading: PropTypes.string.isRequired
+}
+
+Textform.defaultProps = {
+  heading: 'Please Enter User Input Below'
 }
 
 export default App;
