@@ -44,6 +44,18 @@ export default function Textform(props) {
         document.getElementById('consonents').innerHTML = count;
     }
 
+    const copyText = () => {
+        let targetText = document.getElementById('myBox');
+        targetText.focus();
+        targetText.select();
+        navigator.clipboard.writeText(targetText.value);
+    }
+
+    const removeExtraSpaces = () => {
+        let targetText = text.split(/[ ]+/);
+        setText(targetText.join(' '));
+    }
+
     // Declare a new state variable
     const [text, setText] = useState('Enter text here');
 
@@ -54,11 +66,13 @@ export default function Textform(props) {
                     <h4>Enter Text Below - {props.heading}</h4>
                     <textarea className="form-control" value={text} onChange={handleOnChange} id="myBox" rows="7"></textarea>
                 </div>
-                <button className="btn btn-primary mx-1" onClick={handleUpClick}>Convert To Upper Text</button>
-                <button className="btn btn-primary mx-1" onClick={handleLowClick}>Convert To Lower Text</button>
-                <button className="btn btn-primary mx-1" onClick={handleCleanText}>Clean Text</button>
-                <button className="btn btn-primary mx-1" onClick={countVowels}>Count Vowels</button>
-                <button className="btn btn-primary mx-1" onClick={countConsonents}>Count Consonents</button>
+                <button className="btn btn-primary mx-1 my-1" onClick={handleUpClick}>Convert To Upper Text</button>
+                <button className="btn btn-primary mx-1 my-1" onClick={handleLowClick}>Convert To Lower Text</button>
+                <button className="btn btn-primary mx-1 my-1" onClick={handleCleanText}>Clean Text</button>
+                <button className="btn btn-primary mx-1 my-1" onClick={countVowels}>Count Vowels</button>
+                <button className="btn btn-primary mx-1 my-1" onClick={countConsonents}>Count Consonents</button>
+                <button className="btn btn-primary mx-1 my-1" onClick={copyText}>Copy Text</button>
+                <button className="btn btn-primary mx-1 my-1" onClick={removeExtraSpaces}>Remove Extra Spaces</button>
             </div>
             <div className="container my-3">
                 <h4>Here's the text summary</h4>
