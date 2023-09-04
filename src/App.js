@@ -1,5 +1,6 @@
 // import logo from './logo.svg';
 import './App.css';
+// import About from './components/About';
 import Navbar from './components/Navbar';
 import Textform from './components/Textform';
 import PropTypes from 'prop-types'
@@ -26,6 +27,7 @@ function App() {
     <>
       <Navbar title='TextUtils' about='About Us' />
       <Textform heading='User Input'/>
+      {/* <About /> */}
     </>
   );
 }

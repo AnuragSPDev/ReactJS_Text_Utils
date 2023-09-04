@@ -36,7 +36,7 @@ export default function Textform(props) {
         let count = 0;
         for (let i = 0; i <= text.length - 1; i++) {
             let character = text[i].toLowerCase();
-            if (!vowels.includes(character) && character != ' ' &&
+            if (!vowels.includes(character) && character !== ' ' &&
                 character.charCodeAt(0) >= 97 && character.charCodeAt(0) <= 122) {
                 count += 1;
             }
