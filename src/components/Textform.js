@@ -16,6 +16,32 @@ export default function Textform(props) {
 
     const handleCleanText = () => {
         setText('');
+        document.getElementById('vowels').innerHTML = '';
+        document.getElementById('consonents').innerHTML = '';
+    }
+
+    const vowels = ['a', 'e', 'i', 'o', 'u'];
+    const countVowels = () => {
+        let count = 0;
+        for (let i = 0; i <= text.length - 1; i++) {
+            let character = text[i].toLowerCase();
+            if (vowels.includes(character)) {
+                count += 1;
+            }
+        }
+        document.getElementById('vowels').innerHTML = count;
+    }
+
+    const countConsonents = () => {
+        let count = 0;
+        for (let i = 0; i <= text.length - 1; i++) {
+            let character = text[i].toLowerCase();
+            if (!vowels.includes(character) && character != ' ' &&
+                character.charCodeAt(0) >= 97 && character.charCodeAt(0) <= 122) {
+                count += 1;
+            }
+        }
+        document.getElementById('consonents').innerHTML = count;
     }
 
     // Declare a new state variable
@@ -30,13 +56,17 @@ export default function Textform(props) {
                 </div>
                 <button className="btn btn-primary mx-1" onClick={handleUpClick}>Convert To Upper Text</button>
                 <button className="btn btn-primary mx-1" onClick={handleLowClick}>Convert To Lower Text</button>
-                <button className="btn btn-primary" onClick={handleCleanText}>Clean Text</button>
+                <button className="btn btn-primary mx-1" onClick={handleCleanText}>Clean Text</button>
+                <button className="btn btn-primary mx-1" onClick={countVowels}>Count Vowels</button>
+                <button className="btn btn-primary mx-1" onClick={countConsonents}>Count Consonents</button>
             </div>
             <div className="container my-3">
                 <h4>Here's the text summary</h4>
                 <p>{text.split(' ').length} words and {text.length} characters</p>
                 {/* Slowest time to read 125 words is 1 minutes that means 0.008 minutes to read 1 word */}
                 <p>{Math.round(0.008 * text.split(' ').length)} minutes read</p>
+                <p>Number of Vowels <span id="vowels"></span></p>
+                <p>Number of Consonents <span id="consonents"></span></p>
             </div>
         </>
     )
