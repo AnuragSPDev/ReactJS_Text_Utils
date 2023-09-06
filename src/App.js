@@ -1,4 +1,5 @@
 // import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
 // import About from './components/About';
 import Navbar from './components/Navbar';
@@ -7,6 +8,20 @@ import PropTypes from 'prop-types'
 
 
 function App() {
+  const [mode, setMode] = useState('light');
+
+  const toggleMode = () => {
+    if (mode === 'light' ){
+      setMode('dark');
+      document.body.style.backgroundColor = '#02456b';
+      document.body.style.color = 'white';
+    } else {
+      setMode('light');
+      document.body.style.backgroundColor = 'white';
+      document.body.style.color = 'black';
+    }
+  }
+
   return (
     // <div className="App">
     //   <header className="App-header">
@@ -25,8 +40,8 @@ function App() {
     //   </header>
     // </div>
     <>
-      <Navbar title='TextUtils' about='About Us' />
-      <Textform heading='User Input'/>
+      <Navbar title='TextUtils' about='About Us' mode={mode} toggleMode={toggleMode} />
+      <Textform heading='User Input' mode={mode} />
       {/* <About /> */}
     </>
   );
