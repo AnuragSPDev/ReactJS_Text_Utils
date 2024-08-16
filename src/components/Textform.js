@@ -73,8 +73,8 @@ export default function Textform(props) {
             <div className='container my-3'>
                 <div className="mb-3">
                     <h4>Enter Text Below - {props.heading}</h4>
-                    <textarea className={`form-control text-${props.mode === 'light'?'black':'white'}`} value={text} onChange={handleOnChange} id="myBox" rows="7"
-                    style={{backgroundColor: props.mode === 'light'? 'white' : '#434040'}}></textarea>
+                    <textarea className={`form-control text-${props.mode === 'light' ? 'black' : 'white'}`} value={text} onChange={handleOnChange} id="myBox" rows="7"
+                        style={{ backgroundColor: props.mode === 'light' ? 'white' : '#434040' }}></textarea>
                 </div>
                 <button className="btn btn-primary mx-1 my-1" onClick={handleUpClick}>Convert To Upper Text</button>
                 <button className="btn btn-primary mx-1 my-1" onClick={handleLowClick}>Convert To Lower Text</button>
@@ -86,9 +86,12 @@ export default function Textform(props) {
             </div>
             <div className="container my-3">
                 <h4>Here's the text summary</h4>
-                <p>{text.split(' ').length} words and {text.length} characters</p>
+                <p>
+                    {text.split(' ')[0] === ''?'0 ': text.split(' ').length} words and {text.length} characters
+                </p>
                 {/* Slowest time to read 125 words is 1 minutes that means 0.008 minutes to read 1 word */}
-                <p>{Math.round(0.008 * text.split(' ').length)} minutes read</p>
+                {/* <p>{Math.round(0.008 * text.split(' ').length)} minutes read</p> */}
+                <p>{Math.round(0.008 * text.split(/[ ]+/).length)} minutes read</p>
                 <p>Number of Vowels <span id="vowels"></span></p>
                 <p>Number of Consonents <span id="consonents"></span></p>
             </div>

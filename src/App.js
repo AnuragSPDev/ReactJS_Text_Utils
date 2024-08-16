@@ -7,6 +7,13 @@ import Textform from './components/Textform';
 import PropTypes from 'prop-types'
 import Alert from './components/Alert';
 
+// import {
+//   BrowserRouter as Router,
+//   Routes,
+//   Route,
+//   // Link
+// } from "react-router-dom";
+
 
 function App() {
   const [mode, setMode] = useState('light');
@@ -18,18 +25,51 @@ function App() {
       message: message,
       type: type
     })
-    // TO make alert disapper itself after 3 seconds
+    // To make alert disapper itself after 3 seconds
     setTimeout(() => {
       setAlert(null)
     }, 3000);
   }
 
   const toggleMode = () => {
-    if (mode === 'light' ){
-      setMode('dark');
+    console.log(`Current mode is: ${mode}`);
+    // if (mode === 'light') {
+    if (mode === 'light' || mode === 'aqua' || mode === 'lime') {
+      setMode('blue');
       document.body.style.backgroundColor = '#02456b';
       document.body.style.color = 'white';
-      showAlert('Dark Mode Enabled', 'success')
+      showAlert('Blue Mode Enabled', 'success')
+    } else if (mode === 'blue' || mode === 'aqua' || mode === 'lime') {
+      setMode('light');
+      document.body.style.backgroundColor = 'white';
+      document.body.style.color = 'black';
+      showAlert('Light Mode Enabled', 'success')
+    }
+  }
+
+
+  const toggleAquaTheme = () => {
+    // if (mode === 'light') {
+    if (mode === 'light' || mode === 'blue' || mode === 'lime') {
+      setMode('aqua');
+      document.body.style.backgroundColor = '#42d7ca';
+      document.body.style.color = '#c13b3b';
+      showAlert('Aqua Mode Enabled', 'success')
+    } else {
+      setMode('light');
+      document.body.style.backgroundColor = 'white';
+      document.body.style.color = 'black';
+      showAlert('Light Mode Enabled', 'success')
+    }
+  }
+
+  const toggleLimeTheme = () => {
+    // if (mode === 'light') {
+    if (mode === 'light' || mode === 'aqua' || mode === 'blue') {
+      setMode('lime');
+      document.body.style.backgroundColor = '#32a850';
+      document.body.style.color = '#c13b3b';
+      showAlert('Lime Mode Enabled', 'success')
     } else {
       setMode('light');
       document.body.style.backgroundColor = 'white';
@@ -55,11 +95,22 @@ function App() {
     //     </a>
     //   </header>
     // </div>
+    // <>
+    //   <Router>
+    //     <Navbar title='TextUtils' about='About Us' mode={mode} toggleMode={toggleMode} aquaMode={toggleAquaTheme}
+    //       limeMode={toggleLimeTheme} />
+    //     <Alert alert={alert} />  <Routes>
+    //       <Route path="/about" element={<About />} />
+    //       <Route path="/" element={<Textform heading='User Input' mode={mode} showAlert={showAlert} />} />
+    //     </Routes>
+    //   </Router>
+    // </>
     <>
-      <Navbar title='TextUtils' about='About Us' mode={mode} toggleMode={toggleMode} />
-      <Alert alert={alert}/>
-      <Textform heading='User Input' mode={mode} showAlert={showAlert} />
+      <Navbar title='TextUtils' about='About Us' mode={mode} toggleMode={toggleMode} aquaMode={toggleAquaTheme}
+        limeMode={toggleLimeTheme} />
+      <Alert alert={alert} />
       {/* <About /> */}
+      <Textform heading='User Input' mode={mode} showAlert={showAlert} />
     </>
   );
 }
