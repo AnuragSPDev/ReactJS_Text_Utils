@@ -88,7 +88,7 @@ export default function Textform(props) {
             <div className="container my-3">
                 <h4>Here's the text summary</h4>
                 <p>
-                    {text.split(' ')[0] === ''?'0 ': text.split(' ').length} words and {text.length} characters
+                    {text.split(/\s+/)[0] === ''?'0 ': text.split(/\s+/).length} words and {text.length} characters
                 </p>
                 {/* Slowest time to read 125 words is 1 minutes that means 0.008 minutes to read 1 word */}
                 {/* <p>{Math.round(0.008 * text.split(' ').length)} minutes read</p> */}
