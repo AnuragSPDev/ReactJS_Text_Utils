@@ -1,18 +1,18 @@
 // import logo from './logo.svg';
 import { useState } from 'react';
 import './App.css';
-// import About from './components/About';
+import About from './components/About';
 import Navbar from './components/Navbar';
 import Textform from './components/Textform';
 import PropTypes from 'prop-types'
 import Alert from './components/Alert';
 
-// import {
-//   BrowserRouter as Router,
-//   Routes,
-//   Route,
-//   // Link
-// } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  // Link
+} from "react-router-dom";
 
 
 function App() {
@@ -95,23 +95,23 @@ function App() {
     //     </a>
     //   </header>
     // </div>
-    // <>
-    //   <Router>
-    //     <Navbar title='TextUtils' about='About Us' mode={mode} toggleMode={toggleMode} aquaMode={toggleAquaTheme}
-    //       limeMode={toggleLimeTheme} />
-    //     <Alert alert={alert} />  <Routes>
-    //       <Route path="/about" element={<About />} />
-    //       <Route path="/" element={<Textform heading='User Input' mode={mode} showAlert={showAlert} />} />
-    //     </Routes>
-    //   </Router>
-    // </>
     <>
-      <Navbar title='TextUtils' about='About Us' mode={mode} toggleMode={toggleMode} aquaMode={toggleAquaTheme}
-        limeMode={toggleLimeTheme} />
-      <Alert alert={alert} />
-      {/* <About /> */}
-      <Textform heading='User Input' mode={mode} showAlert={showAlert} />
+      <Router>
+        <Navbar title='TextUtils' about='About Us' mode={mode} toggleMode={toggleMode} aquaMode={toggleAquaTheme}
+          limeMode={toggleLimeTheme} />
+        <Alert alert={alert} />  <Routes>
+          <Route path="/about" element={<About mode={mode} />} />
+          <Route path="/" element={<Textform heading='User Input' mode={mode} showAlert={showAlert} />} />
+        </Routes>
+      </Router>
     </>
+    // <>
+    //   <Navbar title='TextUtils' about='About Us' mode={mode} toggleMode={toggleMode} aquaMode={toggleAquaTheme}
+    //     limeMode={toggleLimeTheme} />
+    //   <Alert alert={alert} />
+    //   {/* <About /> */}
+    //   <Textform heading='User Input' mode={mode} showAlert={showAlert} />
+    // </>
   );
 }
 
